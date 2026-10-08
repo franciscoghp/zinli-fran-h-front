@@ -1,9 +1,10 @@
+import { API_URL } from "../../utils/api";
 
 import { FormEvent, useEffect, useState } from "react";
 import { notifySuccess } from "../../components/toast";
 import router from "next/router";
 import Button from "../../components/button";
-import ModalRegister from "../register/modal-register";
+import ModalRegister from "../../components/register/modal-register";
 
 export default function PostCreate() {
   const [data, setData] = useState({
@@ -45,7 +46,7 @@ export default function PostCreate() {
       console.log({ ...data, location, author: user })
       try {
         let response: Response;
-        response = await fetch('http://localhost:4200/post/' , {
+        response = await fetch(API_URL + '/post/' , {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'

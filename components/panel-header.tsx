@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../store/authSlice'
 import { classNames } from '../utils/classnames'
 import { Toaster } from 'react-hot-toast'
-import ModalFotografo from '../pages/register/modal-register'
+import ModalFotografo from './register/modal-register'
 import Profile from '../pages/profile'
 
 

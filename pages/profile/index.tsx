@@ -1,3 +1,4 @@
+import { API_URL } from "../../utils/api";
 import { useEffect, useState } from "react";
 
 export default function Profile({ onClose}: any) {
@@ -12,7 +13,7 @@ export default function Profile({ onClose}: any) {
     }, [])
 
     const getPosts = async (userCurrect: any) => {
-        let posts: any = await fetch('http://localhost:4200/post/' + userCurrect.id);
+        let posts: any = await fetch(API_URL + '/post/' + userCurrect.id);
         if(posts.ok)
           posts = await posts.json();
           setPosts(posts)

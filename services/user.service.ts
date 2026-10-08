@@ -1,5 +1,6 @@
+import { API_URL } from "../utils/api";
 export const UserLogin = async (user: string) => {
-        const response = await fetch("http://localhost:4200/auth/login", {
+        const response = await fetch(API_URL + "/auth/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

@@ -1,3 +1,4 @@
+import { API_URL } from "../utils/api";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setLoading } from "../store/loadingSlice";
@@ -25,7 +26,7 @@ export default function Dashboard() {
 
   const getPosts = async (user: any) => {
     dispatch( setLoading(true) )
-    let posts: any = await fetch('http://localhost:4200/post/' + user.user.id);
+    let posts: any = await fetch(API_URL + '/post/' + user.user.id);
     if(posts.ok)
       posts = await posts.json();
       setPosts(posts)

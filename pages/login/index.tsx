@@ -4,11 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { panelSignIn } from "../../store/thunk/panelLogin";
 import { Toaster } from "react-hot-toast";
 import { notifyError, notifySuccess } from "../../components/toast";
-import ModalRegister from "../register/modal-register";
-import UserCreateNew from "../register/create-new";
+import ModalRegister from "../../components/register/modal-register";
+import UserCreateNew from "../../components/register/create-new";
 
 export default function Login() {
-    const [user, setUser] = useState('');
+    // Demo users (the API uses sample data, login is by username only)
+    const DEMO_ADMIN = 'xropkes0';
+    const DEMO_USER = 'prevening1';
+    const [user, setUser] = useState(DEMO_ADMIN);
     const [loading, setLoading] = useState(false);
     const [openCreateNew, setOpenCreateNew] = useState(false);
     const dispatch = useDispatch();
@@ -40,11 +43,18 @@ export default function Login() {
                     <form>
                         <div>
                             <label className="text-gray-400 text-xs">Usuario</label> <br/>
-                            <input onChange={(e) => setUser(e.target.value)} 
-                                type="email" className="shadow rounded w-full" name="user" id="user" />
+                            <input value={user} onChange={(e) => setUser(e.target.value)}
+                                type="text" className="shadow rounded w-full" name="user" id="user" />
                         </div>
                         {auth.errorLogin && <p className="text-red-500 text-xs mt-2">Credenciales inválidas</p>}
                         {loading && <p className="text-purple-500 text-xs mt-2">Cargando...</p>}
+                        <div className="mt-4 rounded border border-purple-200 bg-purple-50 p-2 text-xs text-gray-600">
+                            <p className="font-semibold text-purple-800">Acceso demo (sin contraseña)</p>
+                            <div className="mt-1 flex gap-2">
+                                <button type="button" onClick={() => setUser(DEMO_ADMIN)} className="flex-1 rounded border border-purple-400 px-1 py-0.5 text-purple-800 hover:bg-purple-100">Admin: {DEMO_ADMIN}</button>
+                                <button type="button" onClick={() => setUser(DEMO_USER)} className="flex-1 rounded border border-purple-400 px-1 py-0.5 text-purple-800 hover:bg-purple-100">Usuario: {DEMO_USER}</button>
+                            </div>
+                        </div>
                         <button onClick={onFormSubmit} className="bg-purple-800 p-1 text-md w-full rounded text-white mt-4"><b>Ingresar</b></button>
                         <div className="mt-[20%]">
                             <span className="p-1 text-xs text-purple-600 inline-flex justify-center">¿No tienes cuenta?, regístrate gratis</span>

@@ -1,3 +1,4 @@
+import { API_URL } from "../utils/api";
 import { FormEvent, PropsWithChildren, useEffect, useState } from "react";
 import { HeartIcon } from '@heroicons/react/24/outline'
 import { HeartIcon as HeartIconSolid } from '@heroicons/react/24/solid'
@@ -48,7 +49,7 @@ export default function Card({ post }: PropsWithChildren<any>) {
 
     try {
       let response: Response;
-        response = await fetch('http://localhost:4200/post/like/' + post.id , {
+        response = await fetch(API_URL + '/post/like/' + post.id , {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json'
@@ -75,7 +76,7 @@ export default function Card({ post }: PropsWithChildren<any>) {
 
     try {
       let response: Response;
-        response = await fetch('http://localhost:4200/post/dislike/' + post.id, {
+        response = await fetch(API_URL + '/post/dislike/' + post.id, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json'
@@ -97,7 +98,7 @@ export default function Card({ post }: PropsWithChildren<any>) {
     e.preventDefault();
     try {
       let response: Response;
-        response = await fetch('http://localhost:4200/post/reject/' + post.id, {
+        response = await fetch(API_URL + '/post/reject/' + post.id, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json'
@@ -118,7 +119,7 @@ export default function Card({ post }: PropsWithChildren<any>) {
     e.preventDefault();
     try {
       let response: Response;
-        response = await fetch('http://localhost:4200/post/aproved/' + post.id, {
+        response = await fetch(API_URL + '/post/aproved/' + post.id, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json'

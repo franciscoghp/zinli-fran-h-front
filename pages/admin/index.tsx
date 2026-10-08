@@ -1,3 +1,4 @@
+import { API_URL } from "../../utils/api";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
@@ -22,7 +23,7 @@ export default function Tags() {
 
   const getPosts = async (user: any) => {
     dispatch( setLoading(true) )
-    let posts: any = await fetch('http://localhost:4200/post/all/' + user.user.id);
+    let posts: any = await fetch(API_URL + '/post/all/' + user.user.id);
     if(posts.ok)
       posts = await posts.json();
       setPosts(posts)

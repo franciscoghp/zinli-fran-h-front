@@ -1,5 +1,6 @@
+import { API_URL } from "../../utils/api";
 
-import Button from "../../components/button";
+import Button from "../button";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { FormEvent, useState } from "react";
 import { useDispatch } from "react-redux";
@@ -61,7 +62,7 @@ const create = async (e: FormEvent) => {
 
   try {
     let response: Response;
-      response = await fetch('http://localhost:4200/auth/register', {
+      response = await fetch(API_URL + '/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
