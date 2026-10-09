@@ -39,7 +39,7 @@ export default function Dashboard() {
   return <RouteGuard>
     <PanelLayout>
       <Head>
-        <title>Zinli-Posts</title>
+        <title>Social Feed</title>
       </Head>
           <div className="max-w-3xl mx-auto mt-4">
             
